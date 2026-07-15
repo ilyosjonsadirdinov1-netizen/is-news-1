@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark-slate: #0f1724;
+  --color-deep-blue: #0b3d91;
+  --color-crimson: #dc143c;
+}
+
+body {
+  @apply bg-news-white text-gray-900 font-sans antialiased;
+}
+
+.prose {
+  max-width: 65ch;
+}
+
+.breaking {
+  background: linear-gradient(90deg, var(--color-crimson), #b10f2e);
+}
