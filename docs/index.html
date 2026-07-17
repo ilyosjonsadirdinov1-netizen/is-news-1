@@ -333,22 +333,12 @@
             <div class="articles">
                 <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1.5rem; color: var(--color-dark-slate);">So'nggi Maqolalar</h2>
                 
-                <div class="article-card">
-                    <div class="article-meta">22 soat oldin</div>
-                    <h3><a href="#">Dunyo bo'ylab iqlim o'zgarishi muammolari</a></h3>
-                    <p>Iqlim o'zgarishi global muammo bo'lib qoldi va barcha mamlakatlar birgalikda kurash olib bormoqda.</p>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-meta">1 kun oldin</div>
-                    <h3><a href="#">Sun'iy intellektning yangi imkoniyatlari</a></h3>
-                    <p>Texnologiya sohasida sun'iy intellekt katta o'zgarishlar keltirmoqda.</p>
-                </div>
-
-                <div class="article-card">
-                    <div class="article-meta">2 kun oldin</div>
-                    <h3><a href="#">Global iqtisodiyot tendensiyalari</a></h3>
-                    <p>Jahon iqtisodiyotida yangi tendensiyalar kuzatilmoqda.</p>
+                <div id="news-container">
+                    <div class="article-card">
+                        <div class="article-meta">Yuklanmoqda...</div>
+                        <h3>Yangiliklar yuklanmoqda</h3>
+                        <p>Iltimos, kuting...</p>
+                    </div>
                 </div>
             </div>
 
@@ -388,5 +378,58 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // NewsAPI'dan yangiliklar olish
+        async function fetchNews() {
+            const container = document.getElementById('news-container');
+            const API_KEY = 'YOUR_NEWSAPI_KEY'; // Bu yerga o'zingizning API key'ingizni yozing
+            
+            try {
+                const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+                const data = await response.json();
+                
+                if (data.articles && data.articles.length > 0) {
+                    container.innerHTML = '';
+                    data.articles.slice(0, 10).forEach(article => {
+                        const date = new Date(article.publishedAt).toLocaleDateString('uz-UZ', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                        
+                        const articleCard = document.createElement('div');
+                        articleCard.className = 'article-card';
+                        articleCard.innerHTML = `
+                            <div class="article-meta">${date}</div>
+                            <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                            <p>${article.description || ''}</p>
+                        `;
+                        container.appendChild(articleCard);
+                    });
+                } else {
+                    container.innerHTML = `
+                        <div class="article-card">
+                            <div class="article-meta">Xatolik</div>
+                            <h3>Yangiliklar topilmadi</h3>
+                            <p>Iltimos, keyinroq urinib ko'ring.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Xatolik:', error);
+                container.innerHTML = `
+                    <div class="article-card">
+                        <div class="article-meta">Xatolik</div>
+                        <h3>Yangiliklarni yuklab bo'lmadi</h3>
+                        <p>API key noto'g'ri yoki internet aloqasi yo'q. API key'ni sozlash uchun kodni tahrirlang.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Sahifa yuklanganda yangiliklarni olish
+        fetchNews();
+    </script>
 </body>
 </html>
