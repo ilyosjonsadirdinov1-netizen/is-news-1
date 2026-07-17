@@ -37,12 +37,13 @@
         }
 
         .header {
-            background-color: var(--color-news-white);
-            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, var(--color-dark-slate) 0%, #1e293b 100%);
+            border-bottom: 2px solid var(--color-deep-blue);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
         .nav {
@@ -53,10 +54,19 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             font-weight: 700;
-            color: var(--color-dark-slate);
+            color: white;
             text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "📰";
+            font-size: 2rem;
         }
 
         .nav-links {
@@ -66,12 +76,17 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--color-gray-900);
-            transition: color 0.3s;
+            color: rgba(255,255,255,0.9);
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
-            color: var(--color-deep-blue);
+            color: white;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
 
         .breaking-ticker {
@@ -99,6 +114,11 @@
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .hero-image {
@@ -106,18 +126,21 @@
             height: 400px;
             object-fit: cover;
             border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: var(--color-dark-slate);
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero-content p {
-            color: var(--color-gray-600);
+            color: rgba(255,255,255,0.9);
             margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .main-content {
@@ -128,14 +151,25 @@
         }
 
         .article-card {
-            padding: 1.5rem 0;
+            padding: 1.5rem;
             border-bottom: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
 
         .article-card h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-dark-slate);
         }
 
         .article-card a {
@@ -150,19 +184,30 @@
         .article-meta {
             color: var(--color-gray-600);
             font-size: 0.875rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-meta::before {
+            content: "🕐";
         }
 
         .sidebar {
-            background-color: #f9fafb;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .sidebar h3 {
             font-family: 'Playfair Display', serif;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             color: var(--color-dark-slate);
+            font-size: 1.5rem;
+            border-bottom: 3px solid var(--color-deep-blue);
+            padding-bottom: 0.5rem;
         }
 
         .category-list {
@@ -170,24 +215,38 @@
         }
 
         .category-list li {
-            padding: 0.5rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .category-list li:hover {
+            background: rgba(11, 61, 145, 0.1);
+            padding-left: 1rem;
         }
 
         .category-list a {
             text-decoration: none;
             color: var(--color-gray-900);
+            font-weight: 500;
+            display: block;
         }
 
         .category-list a:hover {
             color: var(--color-deep-blue);
         }
 
+        .category-list a::before {
+            content: "📂 ";
+            margin-right: 0.5rem;
+        }
+
         .footer {
-            background-color: var(--color-dark-slate);
+            background: linear-gradient(135deg, var(--color-dark-slate) 0%, #1e293b 100%);
             color: white;
-            padding: 2rem 0;
-            margin-top: 2rem;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
         }
 
         .footer-content {
@@ -197,19 +256,25 @@
         }
 
         .footer-section h4 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: white;
+            border-bottom: 2px solid var(--color-deep-blue);
+            padding-bottom: 0.5rem;
         }
 
         .footer-section a {
-            color: white;
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            transition: all 0.3s;
         }
 
         .footer-section a:hover {
-            text-decoration: underline;
+            color: white;
+            padding-left: 0.5rem;
         }
 
         @media (max-width: 768px) {
